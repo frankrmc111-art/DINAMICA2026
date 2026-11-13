@@ -10,6 +10,8 @@
     <description>Agregador para abrir ambos microservicios en IntelliJ IDEA</description>
     <modules>
         <module>ms-config-server</module>
+        <module>ms-eureka-server</module>
         <module>ms-catalogo-service</module>
+        <module>ms-gateway-server</module>
     </modules>
 </project>

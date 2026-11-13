@@ -1,21 +1,22 @@
-# Config Server + Microservicio de Catálogo
+# Config Server + Eureka + Gateway + Microservicio de Catálogo
 
 ## Abrir en IntelliJ IDEA
-1. **File → Open** → seleccionar el `pom.xml` de esta carpeta raíz:
-   `C:\Users\yoloxd\.gemini\antigravity\scratch\ms-catalogo-proyecto\pom.xml`
+1. **File → Open** → seleccionar el `pom.xml` de esta carpeta raíz.
 2. Seleccionar **"Open as Project"**.
-3. Se cargarán automáticamente los dos módulos: `ms-config-server` y `ms-catalogo-service`.
-4. Activar: **Settings → Build, Execution, Deployment → Compiler → Annotation Processors** → marcar **Enable annotation processing** (para Lombok).
+3. IntelliJ cargará los 4 módulos: `ms-config-server`, `ms-eureka-server`, `ms-catalogo-service`, `ms-gateway-server`.
+4. Activar: **Settings → Build → Compiler → Annotation Processors → Enable annotation processing** (Lombok).
 
-## Estado de la Base de Datos
-- PostgreSQL 18 en `localhost:5432` con usuario `postgres` y clave `yoloxd`.
-- Base de datos `ms_catalogo` ya creada y operativa.
+## Requisitos
+- JDK 17+, Maven, PostgreSQL 18 en localhost:5432 (usuario `postgres`, clave `yoloxd`)
+- Base de datos `ms_catalogo` ya creada.
 
 ## Orden de ejecución
-1. **`MsConfigServerApplication`** (puerto `7070`):
-   - Verificar en navegador: http://localhost:7070/ms-catalogo-service/development (credenciales: `root` / `123456`)
-2. **`MsCatalogoServiceApplication`** (puerto `8081`):
-   - Al iniciar se conecta al Config Server y a la BD PostgreSQL.
-3. **Swagger UI**:
-   - http://localhost:8081/doc/swagger-ui.html
-   - http://localhost:8081/v3/api-docs
+1. **`MsConfigServerApplication`** (puerto `7070`)
+2. **`MsEurekaServerApplication`** (puerto `8761`) → Panel: http://localhost:8761
+3. **`MsCatalogoServiceApplication`** (puerto `8081`) → Swagger: http://localhost:8081/doc/swagger-ui.html
+4. **`MsGatewayServerApplication`** (puerto `8080`)
+
+## Probar vía Gateway
+- `GET  http://localhost:8080/categoria`
+- `POST http://localhost:8080/categoria`  body: `{"nombre": "Electrónica"}`
+- `GET  http://localhost:8080/ms-catalogo-service/categoria`  (discovery locator)
