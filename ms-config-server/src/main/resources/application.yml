@@ -12,7 +12,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/noetipo/UNAJIngSoftware.git
+          # Repositorio Git local para desarrollo inmediato (con PostgreSQL en 5432 y password 'yoloxd'):
+          uri: file://${user.home}/.gemini/antigravity/scratch/ms-catalogo-proyecto
+          # Si deseas sincronizar con tu propio repositorio de GitHub, descomenta la siguiente línea:
+          # uri: https://github.com/frankrmc111-art/UNAJIngSoftware.git
           searchPaths: config-data
           default-label: main
           # Si el repositorio es privado, descomentar y usar un token de GitHub:
