@@ -7,11 +7,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>ms-catalogo-proyecto</name>
-    <description>Agregador para abrir ambos microservicios en IntelliJ IDEA</description>
+    <description>Agregador para abrir microservicios en IntelliJ IDEA</description>
     <modules>
         <module>ms-config-server</module>
         <module>ms-eureka-server</module>
         <module>ms-catalogo-service</module>
+        <module>ms-producto-service</module>
         <module>ms-gateway-server</module>
     </modules>
 </project>
